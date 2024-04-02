@@ -27,7 +27,7 @@ public class EventService {
 
     public EventIdDto createEvent(EventRequestDto eventDto){
         Event newEvent = new Event();
-        newEvent.setTittle(eventDto.title());
+        newEvent.setTitle(eventDto.title());
         newEvent.setDetails(eventDto.details());
         newEvent.setMaximumAttendees(eventDto.maximumAttendees());
         newEvent.setSlug(this.createSlug(eventDto.title()));

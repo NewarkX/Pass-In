@@ -18,7 +18,7 @@ public class Event {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
     @Column(nullable = false)
-    private String tittle;
+    private String title;
     @Column(nullable = false)
     private String details;
     @Column(nullable = false,unique = true)
