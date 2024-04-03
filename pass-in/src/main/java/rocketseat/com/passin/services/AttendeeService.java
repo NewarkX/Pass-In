@@ -1,15 +1,17 @@
 package rocketseat.com.passin.services;
 
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import rocketseat.com.passin.domain.attendee.Attendee;
+import rocketseat.com.passin.domain.attendee.exceptions.AttendeeNotFoundException;
 import rocketseat.com.passin.domain.checkin.CheckIn;
 import rocketseat.com.passin.domain.repositories.AttendeeRepository;
 import rocketseat.com.passin.domain.repositories.CheckInRepository;
 import rocketseat.com.passin.dto.attendee.AttendeeDetails;
 import rocketseat.com.passin.dto.attendee.AttendeesListResponseDto;
+import rocketseat.com.passin.dto.attendee.AttendeeBadgeDto;
 import rocketseat.com.passin.dto.attendee.exceptions.AttendeeAlreadyExistException;
+import rocketseat.com.passin.dto.event.AttendeeBadgeResponseDto;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -44,5 +46,11 @@ public class AttendeeService {
     public Attendee registerAttendee(Attendee newAttendee){
         this.attendeeRepository.save(newAttendee);
         return newAttendee;
+    }
+
+    public AttendeeBadgeResponseDto getAttendeeBadge(String attendeeId){
+        Attendee attendee = this.attendeeRepository.findById(attendeeId).orElseThrow(() -> new AttendeeNotFoundException("attendee not found with ID:" + attendeeId));
+        AttendeeBadgeDto badgeDto = new AttendeeBadgeDto(attendee.getName(),attendee.getEmail(),"",attendee.getEvent().getId());
+        return new AttendeeBadgeResponseDto(badgeDto);
     }
 }
