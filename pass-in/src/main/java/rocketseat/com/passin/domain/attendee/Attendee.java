@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import rocketseat.com.passin.domain.event.Event;
 
 import java.time.LocalDateTime;
@@ -11,6 +12,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "attendees")
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Attendee {
