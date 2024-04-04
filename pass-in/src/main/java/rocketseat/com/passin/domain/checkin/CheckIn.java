@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import rocketseat.com.passin.domain.attendee.Attendee;
 
 import java.time.LocalDateTime;
@@ -11,6 +12,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "check_ins")
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class CheckIn {
